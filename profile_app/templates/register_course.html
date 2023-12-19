@@ -1,0 +1,4 @@
+{% for item in courses %}
+    {{ item.title }}
+    <a href="{% url 'profile:register' item.id %}">ثبت نام</a>
+{% endfor %}

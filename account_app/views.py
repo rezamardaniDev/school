@@ -51,7 +51,7 @@ class LoginView(View):
                 is_password_correct = user.check_password(form.cleaned_data.get('password'))
                 if is_password_correct:
                     login(request, user)
-                    return redirect('account:profile')
+                    return redirect('profile:dashboard')
                 else:
                     form.add_error('password', 'رمزعبور وارد شده صحیح نمیباشد')
             else:
@@ -62,6 +62,3 @@ class LoginView(View):
 
         return render(request, 'login.html', context={'form': form})
 
-
-def profile(request):
-    return render(request, 'profile.html')
