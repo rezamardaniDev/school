@@ -1,0 +1,60 @@
+<h1 class="text-center azar font-bold my-4 text-[1.3rem]">ایجاد حساب کاربری</h1>
+    <section class="bg-white rounded-md shadow-xl w-fit gap-x-8 h-fit mx-auto mt-4 flex justify-around px-6">
+        <div>
+            <form class="block p-4 mx-auto azar" method="post">
+                {% csrf_token %}
+                <div class="flex items-center gap-x-6">
+                    <div class="mt-2 ">
+                        <label for="" class="block py-1 text-gray-600 mx-1 mb-2">نام</label>
+                        <input type="text" name="first_name" class="border border-orange-500 rounded-md p-2"
+                               value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}">
+                        <p class="text-[0.9rem] alert text-red-600 text-center mx-auto mt-1">{{ form.first_name.errors }}</p>
+                    </div>
+
+                    <div class="mt-2">
+                        <label for="" class="block py-1 text-gray-600 mx-1 mb-2">نام خانوادگی</label>
+                        <input type="text" name="last_name" class="border border-orange-500 rounded-md p-2"
+                               value="{% if form.last_name.value %}{{ form.last_name.value }}{% endif %}">
+                        <p class="text-[0.9rem] text-red-600 text-center mx-auto mt-1">{{ form.last_name.errors }}</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-6">
+                    <div class="my-2">
+                        <label for="" class="block py-1 text-gray-600 mx-1 mb-2">سن</label>
+                        <input type="text" name="age" class="border border-orange-500 rounded-md p-2"
+                               value="{% if form.age.value %}{{ form.age.value }}{% endif %}">
+                        <p class="text-[0.9rem] text-red-600 text-center mx-auto mt-1">{{ form.age.errors }}</p>
+                    </div>
+
+                    <div class="my-2">
+                        <label for="" class="block py-1 text-gray-600 mx-1 mb-2">نام کاربری</label>
+                        <input type="text" name="username" class="border border-orange-500 rounded-md p-2"
+                               value="{% if form.username.value %}{{ form.username.value }}{% endif %}">
+                        <p class="text-[0.9rem] text-red-600 text-center mx-auto mt-1">{{ form.username.errors }}</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-x-6">
+                    <div class="my-2">
+                        <label for="" class="block py-1 text-gray-600 mx-1 mb-2">رمزعبور</label>
+                        <input type="password" name="password" class="border border-orange-500 rounded-md p-2">
+                        <p class="text-[0.9rem] text-red-600 text-center mx-auto mt-1">{{ form.password.errors }}</p>
+                    </div>
+
+                    <div class="my-2">
+                        <label for="" class="block py-1 text-gray-600 mx-1 mb-2">تکرار رمزعبور</label>
+                        <input type="password" name="confirm_password" class="border border-orange-500 rounded-md p-2">
+                        <p class="text-[0.9rem] text-red-600 text-center mx-auto mt-1">{{ form.confirm_password.errors }}</p>
+                    </div>
+                </div>
+
+                <button type="submit" class="block my-4 bg-orange-500 mx-auto text-white p-2 w-fit rounded-md azar ">ثبت
+                    نام
+                </button>
+            </form>
+        </div>
+        <div class="text-center hidden md:block">
+            <img src="./../static/images/bidood.webp" class="block mx-auto mt-14 rounded-lg">
+            <p class="azar font-bold text-[1.3rem] my-4">دوچرخه سواری هوشمند</p>
+        </div>
+    </section>

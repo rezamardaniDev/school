@@ -37,7 +37,7 @@ class SignUpForm(forms.Form):
             raise forms.ValidationError("رمز عبور های وارد شده یکسان نیستند")
 
 class LoginForm(forms.Form):
-    email = forms.CharField(
+    username = forms.CharField(
         label='نام کاربری',
         widget=forms.TextInput(),
         error_messages={

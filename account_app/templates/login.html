@@ -1,0 +1,39 @@
+<h1 class="text-center azar font-bold my-4 text-[1.3rem]">
+        ورود به حساب
+    </h1>
+    <section
+            class="bg-white rounded-md shadow-xl w-fit gap-x-8 h-fit mx-auto mt-4 flex justify-around px-6"
+    >
+        <div>
+            <form class="block p-4 mx-auto azar" method="post">
+                {% csrf_token %}
+                <div class="mt-8">
+                    <label for="" class="block py-1 text-gray-600 mx-1 mb-2">نام کاربری</label>
+                    <input type="text" name="username" class="border border-orange-500 rounded-md p-2"/>
+                    <p class="text-[0.9rem] text-red-600 text-center mx-auto mt-1">
+                        {{ form.username.errors }}
+                    </p>
+                </div>
+
+                <div class="mt-4">
+                    <label for="" class="block py-1 text-gray-600 mx-1 mb-2">رمزعبور</label>
+                    <input type="password" name="password" class="border border-orange-500 rounded-md p-2"/>
+                    <p class="text-[0.9rem] text-red-600 text-center mx-auto mt-1">
+                        {{ form.password.errors }}
+                    </p>
+                </div>
+
+                <button type="submit" class="block mt-6 bg-orange-500 mx-auto text-white p-2 w-fit rounded-md azar">
+                    ورود به حساب کاربری
+                </button>
+            </form>
+            <span class="azar block my-2 text-orange-500 text-[0.9rem] text-center">حساب کاربری ندارید؟
+                <a href="{% url 'account:signup' %}">ثبت نام</a></span>
+        </div>
+        <div class="text-center hidden md:block">
+            <img src="./../static/images/bidood.webp" class="block mx-auto mt-14 rounded-lg"/>
+            <p class="azar font-bold text-[1.3rem] my-4">
+                دوچرخه سواری هوشمند
+            </p>
+        </div>
+    </section>
