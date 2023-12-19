@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-
+from account_app.models import User
 
 # Create your models here.
 class Course(models.Model):
@@ -37,8 +37,23 @@ class Exam(models.Model):
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return f"{self.section.title} - {self.title}"
 
     class Meta:
         verbose_name = "امتحان"
         verbose_name_plural = "امتحانات"
+
+class RegisterCourse(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="کاربر")
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name="درس")
+
+    def __str__(self):
+        return f"{self.user.first_name}{self.user.last_name} - {self.course}"
+
+class Score(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="کاربر")
+    exam = models.ForeignKey(Exam, on_delete=models.CASCADE, verbose_name="امتحان")
+    score = models.IntegerField(verbose_name="نمره")
+
+    def __str__(self):
+        return f"{self.user.first_name}{self.user.last_name} - {self.exam.title} - {self.score}"
