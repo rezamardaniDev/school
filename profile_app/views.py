@@ -20,10 +20,13 @@ class MyCourses(View):
 
 class CourseList(View):
     def get(self, request):
-        course = Course.objects.all()
+        courses = Course.objects.all()
+        registered_courses = RegisterCourse.objects.filter(user=request.user).values_list('course_id', flat=True)
         return render(request, 'register_course.html', context={
-            "courses": course
+            "courses": courses,
+            'registered_courses': registered_courses
         })
+
 def register(request, pk):
     new_register = RegisterCourse()
     new_register.user = request.user

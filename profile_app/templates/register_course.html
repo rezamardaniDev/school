@@ -1,4 +1,8 @@
 {% for item in courses %}
     {{ item.title }}
-    <a href="{% url 'profile:register' item.id %}">ثبت نام</a>
+    {% if item.id in registered_courses %}
+        شما قبلا در این دوره ثبت نام کرده اید
+        {% else %}
+         <a href="{% url 'profile:register' item.id %}">ثبت نام</a>
+    {% endif %}
 {% endfor %}
