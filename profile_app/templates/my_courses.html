@@ -1,4 +1,5 @@
 درس هایی که شما دارید
 {% for course in mycourse %}
     <p>{{ course.course.title }}</p>
+    <a href="{% url 'profile:karname' course.course.slug %}">مشاهده کارنامه</a>
 {% endfor %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import *
 from .forms import *
-from course_app.models import RegisterCourse, Course
+from course_app.models import RegisterCourse, Course,Score
 
 
 # Create your views here.
@@ -33,3 +33,9 @@ def register(request, pk):
     new_register.course_id = pk
     new_register.save()
     return redirect('profile:my-courses')
+
+def karname(request, course_slug):
+    karname = Score.objects.filter(user=request.user, exam__section__course__slug=course_slug)
+    return render(request, 'karname.html', context={
+        'karnmae': karname
+    })
