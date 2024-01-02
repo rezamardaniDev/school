@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'include/footer_links.html' %}
+    {% block title %}{% endblock %}
+</head>
+<body class="bg-gray-100 azar">
+
+{% include 'include/header.html' %}
+{% block content %}{% endblock %}
+{% include 'include/footer.html' %}
+
+{% include 'include/footer_links.html' %}
+</body>
+</html>
