@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "AzarMehr";
+    src: url("./../fonts/AzarMehr-Light.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "YekanBakh";
+    src: url("./../fonts/YekanBakh-Regular.woff2") format("woff2");
+}
+
+
+.azar{
+    font-family: "AzarMehr";
+}
+.yekna{
+    font-family: "YekanBakh";
+}
