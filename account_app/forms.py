@@ -36,6 +36,14 @@ class SignUpForm(forms.Form):
         else:
             raise forms.ValidationError("رمز عبور های وارد شده یکسان نیستند")
 
+    def clean_age(self):
+        age = self.cleaned_data.get('age')
+        if 18 <= int(age) <= 50:
+            return age
+        else:
+            raise forms.ValidationError("سن وارد شده صحیح نمیباشد")
+
+
 class LoginForm(forms.Form):
     username = forms.CharField(
         label='نام کاربری',
