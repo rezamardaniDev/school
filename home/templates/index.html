@@ -10,9 +10,9 @@
                 هدف ما از تاسیس کدیار این است که هر کسی با هر پیشینه و دانشی بتواند به راحتی وارد دنیای زیبا و پردرآمد
                 برنامه نویسی شود.
             </p>
-            <a href="../../templates/src/login.html"
+            <a href="{% url 'account:login' %}"
                class="inline-block mx-4 px-4 bg-cyan-500 text-white rounded-md p-2 font-bold hover:bg-cyan-600 transition-all duration-200">ورود</a>
-            <a href="../../templates/src/signup.html"
+            <a href="{% url 'account:signup' %}"
                class="inline-block px-4   bg-cyan-500 text-white rounded-md p-2 font-bold hover:bg-cyan-600 transition-all duration-200">ثبت
                 نام</a>
         </div>

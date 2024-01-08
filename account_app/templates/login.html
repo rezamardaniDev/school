@@ -1,39 +1,32 @@
-<h1 class="text-center azar font-bold my-4 text-[1.3rem]">
-        ورود به حساب
-    </h1>
-    <section
-            class="bg-white rounded-md shadow-xl w-fit gap-x-8 h-fit mx-auto mt-4 flex justify-around px-6"
-    >
-        <div>
-            <form class="block p-4 mx-auto azar" method="post">
-                {% csrf_token %}
-                <div class="mt-8">
-                    <label for="" class="block py-1 text-gray-600 mx-1 mb-2">نام کاربری</label>
-                    <input type="text" name="username" class="border border-orange-500 rounded-md p-2"/>
-                    <p class="text-[0.9rem] text-red-600 text-center mx-auto mt-1">
-                        {{ form.username.errors }}
-                    </p>
-                </div>
+{% extends 'include/main.html' %}
+{% block title %}{% endblock %}
 
-                <div class="mt-4">
-                    <label for="" class="block py-1 text-gray-600 mx-1 mb-2">رمزعبور</label>
-                    <input type="password" name="password" class="border border-orange-500 rounded-md p-2"/>
-                    <p class="text-[0.9rem] text-red-600 text-center mx-auto mt-1">
-                        {{ form.password.errors }}
-                    </p>
-                </div>
+{% block content %}
+    <!--body-->
+    <div class="container mx-auto my-6 flex items-center justify-around">
+        <img src="https://static.codingyar.com/media/settings/bvmlTUrFB-image.png" alt="" class="w-1/3 mt-12 hidden md:block">
+        <!--start formd-->
+        <form action="" method="post" class="border-2 border-gray-300 p-6 mt-14 rounded-md w-full mx-6 md:w-1/2 lg:w-1/3">
+            {% csrf_token %}
+            <div class="flex flex-col gap-y-2 mb-4">
+                <span class="font-bold">نام کاربری <span class="text-red-400">*</span></span>
+                <input type="text" name="username" class="p-1 rounded-md" placeholder="نام کاربری شما">
+                <span class="text-[0.9rem] text-red-500">{{ form.username.errors }}</span>
+            </div>
 
-                <button type="submit" class="block mt-6 bg-orange-500 mx-auto text-white p-2 w-fit rounded-md azar">
-                    ورود به حساب کاربری
-                </button>
-            </form>
-            <span class="azar block my-2 text-orange-500 text-[0.9rem] text-center">حساب کاربری ندارید؟
-                <a href="{% url 'account:signup' %}">ثبت نام</a></span>
-        </div>
-        <div class="text-center hidden md:block">
-            <img src="./../static/images/bidood.webp" class="block mx-auto mt-14 rounded-lg"/>
-            <p class="azar font-bold text-[1.3rem] my-4">
-                دوچرخه سواری هوشمند
-            </p>
-        </div>
-    </section>
+            <div class="flex flex-col gap-y-2 mb-4">
+                <span class="font-bold">رمزعبور <span class="text-red-400">*</span></span>
+                <input type="password" name="password" class="p-1 rounded-md" placeholder="رمزعبور">
+                <span class="text-[0.9rem] text-red-500">{{ form.password.errors }}</span>
+            </div>
+
+            <button type="submit" class="bg-cyan-600 text-white p-2 w-full mx-auto rounded-md">ورود</button>
+        </form>
+        <!--end form-->
+    </div>
+    <!--end body-->
+
+    <!--back to home button-->
+    <a href="../../home/templates/index.html"><i
+            class="fas fa-left-long  bg-cyan-600 text-white p-2 rounded-md fixed bottom-2 left-2"></i></a>
+{% endblock %}

@@ -17,7 +17,7 @@ class SignUpView(View):
     def post(self, request):
         form = SignUpForm(request.POST)
         if form.is_valid():
-            exist_user: User & bool = User.objects.filter(email__iexact=form.cleaned_data.get('username')).exists()
+            exist_user: User & bool = User.objects.filter(username__iexact=form.cleaned_data.get('username')).exists()
             if not exist_user:
                 new_user = User()
                 new_user.first_name = form.cleaned_data.get('first_name')
@@ -55,10 +55,9 @@ class LoginView(View):
                 else:
                     form.add_error('password', 'رمزعبور وارد شده صحیح نمیباشد')
             else:
-                form.add_error('email', 'ابتدا باید در سایت ثبت نام کنید')
+                form.add_error('username', 'ابتدا باید در سایت ثبت نام کنید')
 
         else:
             form.add_error('password', 'مشکلی در ثبت نام پیش آمده است')
 
         return render(request, 'login.html', context={'form': form})
-
