@@ -1,0 +1,22 @@
+{% extends 'include/main.html' %}
+{% block title %}{% endblock %}
+
+{% block content %}
+    <!--start about text-->
+    <section class="container  md:h-[69vh] flex justify-between flex-wrap items-start mx-auto mt-28 md:mt-48">
+        <div class="">
+            <h1 class="text-[3rem] font-bold px-4">کدیار</h1>
+            <p class="px-4 my-4 text-[1.1rem] max-w-[40rem]">
+                هدف ما از تاسیس کدیار این است که هر کسی با هر پیشینه و دانشی بتواند به راحتی وارد دنیای زیبا و پردرآمد
+                برنامه نویسی شود.
+            </p>
+            <a href="../../templates/src/login.html"
+               class="inline-block mx-4 px-4 bg-cyan-500 text-white rounded-md p-2 font-bold hover:bg-cyan-600 transition-all duration-200">ورود</a>
+            <a href="../../templates/src/signup.html"
+               class="inline-block px-4   bg-cyan-500 text-white rounded-md p-2 font-bold hover:bg-cyan-600 transition-all duration-200">ثبت
+                نام</a>
+        </div>
+        <img src="https://static.codingyar.com/media/settings/bvmlTUrFB-image.png" class="w-1/2 mt-14 mx-auto md:w-1/4">
+    </section>
+    <!--end about text-->
+{% endblock %}
