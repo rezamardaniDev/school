@@ -1,2 +1,85 @@
-<h1>اطلاعات شما</h1>
-<p>{{ request.user.first_name }} {{ request.user.last_name }}</p>
+{% extends 'include/main.html' %}
+{% block title %}{% endblock %}
+
+{% block content %}
+    <!--start profile-->
+    <section class="container mx-auto md:h-[100vh] pt-24 px-2 mb-4">
+        <div class="flex items-center justify-around md:justify-start gap-x-6 bg-white rounded-md p-2 shadow">
+            <img src="https://static.codingyar.com/static/images/instructor.png" alt="" class="w-[6rem]">
+            <span class="text-[1.3rem] md:text-[1.5rem]">{{ request.user.first_name }} {{ request.user.last_name }}</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-x-2 my-2 ">
+            <div class="border-2 h-fit border-gray-200 shadow-md bg-white md:col-start-1 md:col-end-3 lg:col-start-1 lg:col-end-3 rounded-md">
+                <ul class="flex flex-col justify-center p-4">
+                    <a href="{% url 'profile:dashboard' %}">
+                        <li class="my-1 p-2 border border-gray-100 rounded-md w-full bg-cyan-600 text-white hover:bg-cyan-600 hover:text-white transition-all duration-150 cursor-pointer text-[1rem] font-bold flex items-center gap-x-2">
+                            <i class="fas fa-dashboard"></i>داشبورد
+                        </li>
+                    </a>
+                    <a href="{% url 'profile:my-courses' %}">
+                        <li class="my-1 p-2 border border-gray-100 rounded-md w-full hover:bg-cyan-600 hover:text-white transition-all duration-150 cursor-pointer text-[1rem] font-bold flex items-center gap-x-2">
+                            <i class="fas fa-book"></i>دوره های من
+                        </li>
+                    </a>
+                    <a href="{% url 'profile:karname' %}">
+                        <li class="my-1 p-2 border border-gray-100 rounded-md w-full hover:bg-cyan-600 hover:text-white transition-all duration-150 cursor-pointer text-[1rem] font-bold flex items-center gap-x-2">
+                            <i class="fas fa-paper-plane"></i>کارنامه
+                        </li>
+                    </a>
+                    <a href="{% url 'profile:logout' %}">
+                        <li class="my-1 p-2 border border-gray-100 rounded-md w-full hover:bg-cyan-600 hover:text-white transition-all duration-150 cursor-pointer text-[1rem] font-bold flex items-center gap-x-2">
+                            <i class="fas fa-sign-out-alt"></i>خروج
+                        </li>
+                    </a>
+                </ul>
+            </div>
+            <div class="border-2 p-4 border-gray-200 shadow-md bg-white md:col-start-3 md:col-end-6 lg:col-start-3 lg:col-end-7 rounded-md">
+                <h2 class="font-bold text-[1.2rem] m-2">اطلاعات شخصی</h2>
+                <div class="mx-auto p-2 grid grid-cols-2 gap-y-6 my-2">
+                    <div class="flex flex-col gap-2">
+                        <p class="font-bold text-cyan-600">نام : </p>
+                        <p class="text-[1.2rem] text-gray-400">{{ request.user.first_name }}</p>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <p class="font-bold text-cyan-600">نام خانوادگی: </p>
+                        <p class="text-[1.2rem] text-gray-400">{{ request.user.last_name }}</p>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <p class="font-bold text-cyan-600">شماره تماس : </p>
+                        <p class="text-[1.2rem] text-gray-400">09035913296</p>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <p class="font-bold text-cyan-600">نام کاربری : </p>
+                        <p class="text-[1.2rem] text-gray-400">{{ request.user.username }}</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-2 mx-2 mt-12">
+                    <div class="text-white flex gap-x-2 items-center bg-orange-600 py-4 px-2 rounded-md"><i
+                            class="fas fa-money-check-dollar text-[1.5rem] bg-white bg-opacity-25 p-2 rounded-md"></i>
+                        <div class="flex gap-y-1 flex-col">
+                            <p class="text-[.9rem] font-bold">مجموع پرداخت ها</p>
+                            <p class="text-[.9rem]">10000 تومان</p>
+                        </div>
+                    </div>
+                    <div class="text-white flex gap-x-2 items-center bg-sky-600 py-4 px-2 rounded-md"><i
+                            class="fas fa-rocket text-[1.5rem] bg-white bg-opacity-25 p-2 rounded-md"></i>
+                        <div class="flex gap-y-1 flex-col">
+                            <p class="text-[.9rem] font-bold">دوره های من</p>
+                            <p class="text-[.9rem]">3 دوره</p>
+                        </div>
+                    </div>
+                    <div class="text-white flex gap-x-2 items-center bg-green-600 py-4 px-2 rounded-md"><i
+                            class="fas fa-basket-shopping text-[1.5rem] bg-white bg-opacity-25 p-2 rounded-md"></i>
+                        <div class="flex gap-y-1 flex-col">
+                            <p class="text-[.9rem] font-bold">مجموع حساب</p>
+                            <p class="text-[.9rem]">0 تومان</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end profile-->
+{% endblock %}

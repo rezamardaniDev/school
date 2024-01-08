@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from django.views.generic import *
 from .forms import *
@@ -34,8 +35,16 @@ def register(request, pk):
     new_register.save()
     return redirect('profile:my-courses')
 
-def karname(request, course_slug):
-    karname = Score.objects.filter(user=request.user, exam__section__course__slug=course_slug)
-    return render(request, 'karname.html', context={
-        'karnmae': karname
-    })
+# def karname(request, course_slug):
+#     karname = Score.objects.filter(user=request.user, exam__section__course__slug=course_slug)
+#     return render(request, 'karname.html', context={
+#         'karnmae': karname
+#     })
+
+def karname_page(request):
+    return render(request, 'karname.html', context={})
+
+class LogOutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect("home:home")
