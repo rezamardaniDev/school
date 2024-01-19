@@ -13,7 +13,7 @@
     <a class="bg-cyan-500 text-center my-6 block text-white w-fit mx-auto rounded-md p-4 text-[1rem]" href="{% url 'profile:handel' item.id %}">{{ item | linebreaks}}</a>
     {% endfor %}
     {% else %}
-    <h2 class="text-center mt-4 text-[1.5rem]">زمان این دوره هنوز به پایان نرسیده است</h2>
+    <h2 class="text-center mt-4 text-[1.5rem]">زمان این دوره هنوز به پایان نرسیده یا نمره ای در این بخش تعریف نشده!</h2>
 {% endif %}
  <a href="{% url 'profile:karname' %}"><i
             class="fas fa-left-long  bg-cyan-600 text-white p-2 rounded-md fixed bottom-2 left-2"></i></a>
