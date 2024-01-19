@@ -18,7 +18,7 @@
                         {% if item.id in registered_courses %}
                             <span class="text-gray-500 font-bold block py-2">شما دانشجوی این دوره هستید</span>
                         {% else %}
-                            <a href=""
+                            <a href="{% url 'profile:register' item.id %}"
                                class="block my-2 p-1 bg-green-500 text-white rounded-md w-fit hover:bg-green-600 transition-all duration-150">ثبت
                                 نام</a>
                         {% endif %}

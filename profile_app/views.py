@@ -1,21 +1,27 @@
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import *
 from .forms import *
 from .utility import process
 from course_app.models import RegisterCourse, Course, Score, Section
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils import timezone
 
 
 # Create your views here.
-class ProfileView(View):
+class ProfileView(LoginRequiredMixin, View):
+    login_url = '/account/login'
+
     def get(self, request):
         return render(request, 'profile.html', context={
 
         })
 
 
-class MyCourses(View):
+class MyCourses(LoginRequiredMixin, View):
+    login_url = '/account/login'
     def get(self, request):
         courses: RegisterCourse = RegisterCourse.objects.filter(user_id=request.user.id).all()
         return render(request, 'my_courses.html', context={
@@ -33,6 +39,7 @@ class CourseList(View):
         })
 
 
+@login_required(login_url="/account/login")
 def register(request, pk):
     new_register = RegisterCourse()
     new_register.user = request.user
@@ -41,17 +48,22 @@ def register(request, pk):
     return redirect('profile:my-courses')
 
 
+@login_required(login_url="/account/login")
 def karname_page(request):
     courses = RegisterCourse.objects.filter(user_id=request.user.id).all()
-    print(courses)
     return render(request, 'karname.html', context={
         'courses': courses
     })
 
 
+@login_required(login_url="/account/login")
 def download_karname(request, id):
-    section = Section.objects.filter(course_id=id).all()
-    print(section)
+    course_date = Course.objects.filter(id=id).first()
+    t = course_date.end_registration_date
+    if timezone.now() > t:
+        section = Section.objects.filter(course_id=id).all()
+    else:
+        section = None
     return render(request, 'part.html', context={
         'sections': section
     })

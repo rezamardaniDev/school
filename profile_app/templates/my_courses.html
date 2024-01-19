@@ -6,7 +6,13 @@
     <section class="container mx-auto md:h-[100vh] pt-24 px-2 mb-4">
         <div class="flex items-center justify-around md:justify-start gap-x-6 bg-white rounded-md p-2 shadow">
             <img src="https://static.codingyar.com/static/images/instructor.png" alt="" class="w-[6rem]">
-            <span class="text-[1.3rem] md:text-[1.5rem]">رضا مردانی</span>
+            <span class="text-[1.3rem] md:text-[1.5rem]">
+                  {% if request.user.first_name %}
+                    {{ request.user.first_name }} {{ request.user.last_name }}
+                {% else %}
+                    کاربر ناشناس
+                {% endif %}
+            </span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-x-2 my-2">
             <div class="border-2 h-fit   border-gray-200 shadow-md bg-white md:col-start-1 md:col-end-3 lg:col-start-1 lg:col-end-3 rounded-md">
