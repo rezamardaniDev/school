@@ -13,10 +13,6 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
-    class Meta:
-        verbose_name = "دوره"
-        verbose_name_plural = "دوره ها"
-
 
 class Section(models.Model):
     title = models.CharField(max_length=250, verbose_name="نام بخش")
@@ -25,10 +21,6 @@ class Section(models.Model):
 
     def __str__(self):
         return self.title
-
-    class Meta:
-        verbose_name = "بخش"
-        verbose_name_plural = "بخش ها"
 
 
 class Exam(models.Model):
@@ -39,9 +31,6 @@ class Exam(models.Model):
     def __str__(self):
         return f"{self.section.title} - {self.title}"
 
-    class Meta:
-        verbose_name = "امتحان"
-        verbose_name_plural = "امتحانات"
 
 class RegisterCourse(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="کاربر")

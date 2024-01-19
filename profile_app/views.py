@@ -2,7 +2,8 @@ from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from django.views.generic import *
 from .forms import *
-from course_app.models import RegisterCourse, Course,Score
+from .utility import process
+from course_app.models import RegisterCourse, Course,Score, Section
 
 
 # Create your views here.
@@ -35,14 +36,30 @@ def register(request, pk):
     new_register.save()
     return redirect('profile:my-courses')
 
-# def karname(request, course_slug):
-#     karname = Score.objects.filter(user=request.user, exam__section__course__slug=course_slug)
-#     return render(request, 'karname.html', context={
-#         'karnmae': karname
-#     })
-
 def karname_page(request):
-    return render(request, 'karname.html', context={})
+    courses = RegisterCourse.objects.filter(user_id=request.user.id).all()
+    print(courses)
+    return render(request, 'karname.html', context={
+        'courses': courses
+    })
+
+def download_karname(request, id):
+    section = Section.objects.filter(course_id=id).all()
+    print(section)
+    return render(request, 'part.html', context={
+        'sections': section
+    })
+
+def handel_proceess_of_karname(request, id):
+    scores = Score.objects.filter(exam__section_id=id, user_id=request.user.id).all()
+    title = []
+    score = []
+    for item in scores:
+        title.append(item.exam.title)
+        score.append(item.score)
+    print(title, score)
+    process.accepted(title, score, request.user.username)
+    return render(request, 'part.html', context={})
 
 class LogOutView(View):
     def get(self, request):

@@ -1,0 +1,9 @@
+{% block title %}{% endblock %}
+
+{% block content %}
+
+    {% for item in sections %}
+             <a href="{% url 'profile:handel' item.id %}">{{ item | linebreaks}}</a>
+    {% endfor %}
+
+{% endblock %}
