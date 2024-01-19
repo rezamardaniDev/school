@@ -11,22 +11,22 @@
         <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-x-2 my-2 ">
             <div class="border-2 h-fit border-gray-200 shadow-md bg-white md:col-start-1 md:col-end-3 lg:col-start-1 lg:col-end-3 rounded-md">
                 <ul class="flex flex-col justify-center p-4">
-                    <a href="profile.html">
+                    <a href="{% url 'profile:dashboard' %}">
                         <li class="my-1 p-2 border border-gray-100 rounded-md w-full hover:bg-cyan-600 hover:text-white transition-all duration-150 cursor-pointer text-[1rem] font-bold flex items-center gap-x-2">
                             <i class="fas fa-dashboard"></i>داشبورد
                         </li>
                     </a>
-                    <a href="my-courses.html">
+                    <a href="{% url 'profile:my-courses' %}">
                         <li class="my-1 p-2 border border-gray-100 rounded-md w-full hover:bg-cyan-600 hover:text-white transition-all duration-150 cursor-pointer text-[1rem] font-bold flex items-center gap-x-2">
                             <i class="fas fa-book"></i>دوره های من
                         </li>
                     </a>
-                    <a href="karname.html">
+                    <a href="{% url 'profile:karname' %}">
                         <li class="my-1 p-2 border border-gray-100 rounded-md w-full bg-cyan-600 text-white hover:bg-cyan-600 hover:text-white transition-all duration-150 cursor-pointer text-[1rem] font-bold flex items-center gap-x-2">
                             <i class="fas fa-paper-plane"></i>کارنامه
                         </li>
                     </a>
-                    <a href="">
+                    <a href="{% url 'profile:logout' %}">
                         <li class="my-1 p-2 border border-gray-100 rounded-md w-full hover:bg-cyan-600 hover:text-white transition-all duration-150 cursor-pointer text-[1rem] font-bold flex items-center gap-x-2">
                             <i class="fas fa-sign-out-alt"></i>خروج
                         </li>
@@ -38,7 +38,8 @@
                     {% for item in courses %}
                         <li class="my-1 p-2 shadow text-center border border-gray-100 rounded-md w-full text-[1rem] grid grid-cols-1 gap-x-2 gap-y-2 md:flex md:justify-between">
                             <span class="font-bold cursor-pointer text-center">{{ item.course.title }}</span>
-                            <a href="{% url 'profile:download' item.course.id %}" class="text-[0.9rem]  kicon text-white w-fit block mx-auto md:mx-0 bg-green-500 p-1 rounded hover:bg-green-600 transition-all duration-150 cursor-pointer">
+                            <a href="{% url 'profile:download' item.course.id %}"
+                               class="text-[0.9rem]  kicon text-white w-fit block mx-auto md:mx-0 bg-green-500 p-1 rounded hover:bg-green-600 transition-all duration-150 cursor-pointer">
                                 دریافت کارنامه</a>
                         </li>
                     {% endfor %}

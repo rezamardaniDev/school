@@ -1,3 +1,4 @@
+from io import BytesIO
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import SimpleDocTemplate
 from reportlab.platypus import Table
@@ -5,13 +6,14 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import TableStyle, Paragraph
 from reportlab.lib import colors
 
-def accepted(courses_title, courses_score, user_name):
+
+def accepted(courses_title, courses_score, user_name, file_name):
+    buffer = BytesIO()
+
     data = [
         courses_title,
         courses_score
     ]
-
-    fileName = "score.pdf"
 
     style = TableStyle([
         ('ALIGN', (0, 0), (-1, -1), 'CENTER')
@@ -25,7 +27,7 @@ def accepted(courses_title, courses_score, user_name):
         ]
     )
     pdf = SimpleDocTemplate(
-        fileName,
+        buffer,
         pagesize=letter
     )
 
@@ -34,9 +36,13 @@ def accepted(courses_title, courses_score, user_name):
     table.setStyle(style)
     table.setStyle(ts)
 
-    header_text = user_name
+    header_text = f"username: {user_name}"
     styles = getSampleStyleSheet()
     header_paragraph = Paragraph(header_text, styles['Heading1'])
 
     elms = [header_paragraph, table]
     pdf.build(elms)
+
+
+    buffer.seek(0)
+    return buffer.read()

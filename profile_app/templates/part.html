@@ -1,9 +1,17 @@
-{% block title %}{% endblock %}
-
-{% block content %}
-
+{% include 'include/header_links.html' %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'include/header_links.html' %}
+ </head>
+<body class="bg-gray-100 azar">
+    <h2 class="text-center mt-4 text-[1.5rem]">لطفا یک بخش را برای دانلود انتخاب کنید:</h2>
     {% for item in sections %}
-             <a href="{% url 'profile:handel' item.id %}">{{ item | linebreaks}}</a>
-    {% endfor %}
-
-{% endblock %}
+    <a class="bg-cyan-500 text-center my-6 block text-white w-fit mx-auto rounded-md p-4 text-[1rem]" href="{% url 'profile:handel' item.id %}">{{ item | linebreaks}}</a>
+{% endfor %}
+ <a href="{% url 'home:home' %}"><i
+            class="fas fa-left-long  bg-cyan-600 text-white p-2 rounded-md fixed bottom-2 left-2"></i></a>
+</body>
+</html>
