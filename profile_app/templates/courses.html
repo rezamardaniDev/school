@@ -1,0 +1,32 @@
+{% extends 'include/main.html' %}
+{% block title %}{% endblock %}
+
+{% block content %}
+    <section class="container mx-auto md:h-[100vh] pt-24 px-2 mb-6">
+        <div class="courses grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {% for item in courses %}
+                <!--box-->
+                <div class="box shadow-sm bg-white w-[80%] md:w-[90%] mx-auto rounded-md flex flex-col gap-y-2 ">
+                    <img src="https://static.codingyar.com/media/courses/bdjango-banner.jpg" alt=""
+                         class="rounded-t-md">
+                    <span class="text-[0.8rem] block bg-cyan-600 text-white p-1 rounded-sm w-fit mx-2">طراحی وب</span>
+                    <h2 class="text-[1.3rem] font-bold mx-2">{{ item.title }}</h2>
+                    <p class="text-[0.9rem] text-gray-500 mx-2 font-bold">اگر شما هم به دنبال یادگیری این فریمورک که
+                        بهترین ها هستش هستید</p>
+                    <hr>
+                    <div class="flex justify-between px-2 items-center">
+                        {% if item.id in registered_courses %}
+                            <span class="text-gray-500 font-bold block py-2">شما دانشجوی این دوره هستید</span>
+                        {% else %}
+                            <a href=""
+                               class="block my-2 p-1 bg-green-500 text-white rounded-md w-fit hover:bg-green-600 transition-all duration-150">ثبت
+                                نام</a>
+                        {% endif %}
+                        <span class="text-gray-500 font-bold">1,200,000 تومان</span>
+                    </div>
+                </div>
+            {% endfor %}
+            <!--end box-->
+        </div>
+    </section>
+{% endblock %}
